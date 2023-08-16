@@ -1,8 +1,10 @@
+import CarPage from "@/components/templates/carPage";
+import carsData from "@/data/carData";
 
 export default function Home() {
   return (
     <div>
-        <h1>Store car</h1>
+      <CarPage data={carsData} />
     </div>
   )
 }
