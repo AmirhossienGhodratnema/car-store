@@ -8,60 +8,25 @@ export default function Filter() {
     const router = useRouter();
     const [min, max] = router.query.slug || [];
     const filter = carsData.filter(item => item.price > min && item.price < max);
-    const backHandler =() =>{
+    const backHandler = () => {
         router.back();
     };
+    if (filter.length == 0) return <p style={{ textAlign: "center" }}>Not founed</p>
     return (
-        // <div className="container">
-        //     <div className='back' onClick={backHandler}>
-        //         <Back />
-        //         <p>back</p>
-        //     </div>
-        //     {
-        //         filter?.map(item => (
-        //             <Card key={item.id} {...item} />
-        //         ))
-        //     }
-
-        //     <style jsx>{`
-        //         .container {
-        //             display: flex;
-        //             flex-wrap: wrap;
-        //             justify-content: space-around;
-        //             max-width: 1200px;
-        //             margin: auto;
-        //           }
-        //         .back {
-        //             display: flex;
-        //             align-items: center;
-        //             font-size: 1.5rem;
-        //             width: fit-content;
-        //             background-color: #befa00;
-        //             padding: 10px 15px;
-        //             border-radius: 5px;
-        //             margin: auto;
-        //             cursor: pointer;
-        //         }
-
-        //         .back p{
-        //             margin: 0 .5rem;
-        //         }
-        //     `}</style>
-        // </div>
 
         <div>
-        <div className='back' onClick={backHandler}>
-            <Back />
-            <p>back</p>
-        </div>
-        <div className="container">
-            {
-                filter?.map(item => (
-                    <Card key={item.id} {...item} />
-                ))
-            }
-        </div>
-        <style jsx >{`
+            <div className='back' onClick={backHandler}>
+                <Back />
+                <p>back</p>
+            </div>
+            <div className="container">
+                {
+                    filter?.map(item => (
+                        <Card key={item.id} {...item} />
+                    ))
+                }
+            </div>
+            <style jsx >{`
             .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -85,9 +50,10 @@ export default function Filter() {
             .back p{
                 margin: 0 .5rem;
             }
+        
 
         `}</style>
-    </div>
+        </div>
     )
 
 };
