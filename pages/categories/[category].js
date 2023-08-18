@@ -1,3 +1,4 @@
+import Back from "@/components/icons/Back";
 import Card from "@/components/module/card";
 import Category from "@/components/module/category";
 import carsData from "@/data/carData";
@@ -7,9 +8,17 @@ export default function Categories() {
     const router = useRouter();
     const { category } = router.query;
     const filter = carsData.filter(item => item.category == category)
+    const backHandler =() =>{
+        router.back();
+    };
+
+
     return (
         <div>
-            <Category />
+            <div className='back' onClick={backHandler}>
+                <Back />
+                <p>back</p>
+            </div>
             <div className="container">
                 {
                     filter?.map(item => (
@@ -25,6 +34,23 @@ export default function Categories() {
                     max-width: 1200px;
                     margin: auto;
                   }
+              
+                .back {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    width: fit-content;
+                    background-color: #befa00;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    margin: auto;
+                    cursor: pointer;
+                }
+
+                .back p{
+                    margin: 0 .5rem;
+                }
+  
             `}</style>
         </div>
     )
